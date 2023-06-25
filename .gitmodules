@@ -1,0 +1,3 @@
+[submodule "udagram-api-feed"]
+	path = udagram-api-feed
+	url = https://github.com/bichvanuit/udagram-api-feed

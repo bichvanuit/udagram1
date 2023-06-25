@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reverseproxy
+  labels:
+    app: reverseproxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reverseproxy
+  template:
+    metadata:
+      labels:
+        app: reverseproxy
+    spec:
+      containers:
+      - name: reverseproxy
+        image: vanltb/reverseproxy
+        envFrom:
+          - secretRef:
+              name: env-secret
+          - configMapRef:
+              name: env-configmap
+          - secretRef:
+              name: aws-secret
+        ports:
+        - containerPort: 80
