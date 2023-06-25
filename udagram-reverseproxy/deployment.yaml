@@ -25,4 +25,4 @@ spec:
           - secretRef:
               name: aws-secret
         ports:
-        - containerPort: 80
+        - containerPort: 8080

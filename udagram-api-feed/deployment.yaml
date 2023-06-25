@@ -5,7 +5,7 @@ metadata:
   labels:
     app: udagram-api-feed
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: udagram-api-feed
@@ -17,6 +17,9 @@ spec:
       containers:
       - name: udagram-api-feed
         image: vanltb/udagram-api-feed
+        resources:
+          requests:
+            cpu: 100m
         envFrom:
           - secretRef:
               name: env-secret
@@ -25,4 +28,4 @@ spec:
           - secretRef:
               name: aws-secret
         ports:
-        - containerPort: 80
+        - containerPort: 8080

@@ -1,13 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: udagram-api-feed
   labels:
-    run: udagram-api-feed
+    app: udagram-api-feed
+  name: udagram-api-feed
 spec:
   ports:
   - port: 8080
-    targetPort: 8000
     protocol: TCP
+    targetPort: 8080
   selector:
-    run: udagram-api-feed
+    app: udagram-api-feed
+  sessionAffinity: None
+  type: ClusterIP
